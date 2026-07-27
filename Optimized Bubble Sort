@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, temp, a[100], flag, passes = 0;
+
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    for(i = 0; i < n - 1; i++) {
+        flag = 0;
+        passes++;
+
+        for(j = 0; j < n - i - 1; j++) {
+            if(a[j] > a[j + 1]) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+                flag = 1;
+            }
+        }
+
+        if(flag == 0)
+            break;
+    }
+
+    if(passes == 1 && flag == 0)
+        printf("Array is already sorted\n");
+
+    printf("Passes required: %d", passes);
+
+    return 0;
+}
