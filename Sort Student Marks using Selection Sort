@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, min, temp, marks[100];
+
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++)
+        scanf("%d", &marks[i]);
+
+    for(i = 0; i < n - 1; i++) {
+        min = i;
+        for(j = i + 1; j < n; j++) {
+            if(marks[j] < marks[min])
+                min = j;
+        }
+
+        temp = marks[i];
+        marks[i] = marks[min];
+        marks[min] = temp;
+    }
+
+    for(i = 0; i < n; i++)
+        printf("%d ", marks[i]);
+
+    return 0;
+}
